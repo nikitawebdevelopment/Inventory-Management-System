@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>Angular + Express + Mongo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/mainController.js"></script>
+    <script src="services/itemService.js"></script>
+</head>
+
+<body ng-controller="MainController">
+
+    <h1>Item List</h1>
+
+    <form ng-submit="addItem()">
+        <input type="text" ng-model="newItem.name" placeholder="Name" required />
+        <input type="text" ng-model="newItem.description" placeholder="Description" required />
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        <li ng-repeat="item in items">
+            {{ item.name }} - {{ item.description }}
+
+            <!-- Update Button -->
+            <button ng-click="editItem(item)">Edit</button>
+
+            <!-- Delete Button -->
+            <button ng-click="deleteItem(item._id)">Delete</button>
+        </li>
+    </ul>
+
+</body>
+
+</html>
